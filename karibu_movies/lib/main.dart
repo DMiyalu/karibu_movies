@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // Define the default ColorTheme.
-        accentColor: Color.fromRGBO(245, 46, 46, 1.0),
+        accentColor: Color.fromRGBO(1, 0, 74, 1.0),
         primaryColorLight: Color.fromRGBO(19, 85, 255, 1.0),
         primaryColor: Color.fromRGBO(3, 5, 52, 1.0),
         scaffoldBackgroundColor: Color.fromRGBO(30, 30, 30, 1.0),
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(
           subtitle1: TextStyle(
             fontFamily: 'Roboto',
-            color: Colors.black.withOpacity(.8),
+            color: Colors.white,
           ),
           headline6: TextStyle(
             fontFamily: 'Roboto',
@@ -39,16 +39,18 @@ class MyApp extends StatelessWidget {
           headline5: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 14.0,
+            color: Colors.white,
           ),
           button: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 14.0,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
           bodyText1: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 14.0,
-            color: Colors.black.withOpacity(.8),
+            color: Colors.white,
           ),
         ),
       ),
