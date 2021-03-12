@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:karibu_movies/widgets/button_view_movie.dart';
 
 Widget movieCard(BuildContext context,
-    {String title, String actor, String description, String image}) {
+    {String title,
+    String actor,
+    String description,
+    String image,
+    Function onTap}) {
   Size size = MediaQuery.of(context).size;
   return Container(
     padding: EdgeInsets.all(10),
@@ -18,17 +22,20 @@ Widget movieCard(BuildContext context,
         ),
 
         // Image Movie
-        Container(
-          height: 500,
-          width: 350,
-          margin: EdgeInsets.symmetric(vertical: 30),
-          child: Image(
-            image: AssetImage(
-              image,
+        InkWell(
+          onTap: onTap,
+          child: Container(
+            height: 500,
+            width: 350,
+            margin: EdgeInsets.symmetric(vertical: 30),
+            child: Image(
+              image: AssetImage(
+                image,
+              ),
+              height: 320,
+              width: 200,
+              fit: BoxFit.cover,
             ),
-            height: 320,
-            width: 200,
-            fit: BoxFit.cover,
           ),
         ),
 

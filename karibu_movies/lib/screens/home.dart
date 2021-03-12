@@ -112,13 +112,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 ),
                 items: listMovies
                     .map(
-                      (movie) => movieCard(
-                        context,
-                        title: movie['title'],
-                        actor: movie['actor'],
-                        description: movie['description'],
-                        image: movie['image'],
-                      ),
+                      (movie) => movieCard(context,
+                          title: movie['title'],
+                          actor: movie['actor'],
+                          description: movie['description'],
+                          image: movie['image'], onTap: () {
+                        Navigator.pushNamed(context, '/movie');
+                      }),
                     )
                     .toList(),
               ),

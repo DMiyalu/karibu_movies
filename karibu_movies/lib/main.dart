@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karibu_movies/screens/home.dart';
+import 'package:karibu_movies/screens/movie.dart';
+import 'package:karibu_movies/screens/movie_viewer.dart';
 
 void main() {
   runApp(MyApp());
@@ -62,6 +64,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => Home(),
+        '/movie': (BuildContext context) => Movie(),
+        '/movie_viewer': (BuildContext context) => MovieViewer(),
       },
     );
   }
