@@ -47,6 +47,12 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
             fontWeight: FontWeight.w600,
           ),
+          headline5: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 15.0,
+            color: Colors.white.withOpacity(.9),
+            fontWeight: FontWeight.w500,
+          ),
           button: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 14.0,

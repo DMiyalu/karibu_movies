@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:karibu_movies/mocks/movies.dart';
-import 'package:karibu_movies/widgets/button_view_movie.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:karibu_movies/widgets/movie_card.dart';
 
