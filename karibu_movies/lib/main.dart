@@ -30,16 +30,20 @@ class MyApp extends StatelessWidget {
           subtitle1: TextStyle(
             fontFamily: 'Roboto',
             color: Colors.white,
+            fontSize: 18.0,
+            fontWeight: FontWeight.w600,
+          ),
+          subtitle2: TextStyle(
+            fontFamily: 'Roboto',
+            color: Colors.white,
+            fontSize: 17.0,
+            fontWeight: FontWeight.w600,
           ),
           headline6: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 20.0,
             color: Colors.white,
-          ),
-          headline5: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 14.0,
-            color: Colors.white,
+            fontWeight: FontWeight.w600,
           ),
           button: TextStyle(
             fontFamily: 'Roboto',
@@ -48,9 +52,9 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
           ),
           bodyText1: TextStyle(
-            fontFamily: 'Roboto',
+            color: Colors.white.withOpacity(.95),
             fontSize: 14.0,
-            color: Colors.white,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),

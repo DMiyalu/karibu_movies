@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:karibu_movies/mocks/movies.dart';
 import 'package:karibu_movies/widgets/button_view_movie.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:karibu_movies/widgets/movie_card.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -29,14 +31,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Color.fromRGBO(15, 15, 40, 1.0),
         centerTitle: true,
         title: Text(
           "Karibu-Movies",
-          style: Theme.of(context)
-              .textTheme
-              .headline6
-              .copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.headline6,
         ),
         bottom: TabBar(
           controller: _tabController,
@@ -45,6 +44,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             borderSide: BorderSide(color: Colors.white, width: 1),
           ),
           labelColor: Colors.white,
+          labelStyle: Theme.of(context).textTheme.bodyText1,
           tabs: <Widget>[
             Tab(
               child: Text('Populaires'),
@@ -67,58 +67,70 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ],
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: <Widget>[
-          ListView(
-            scrollDirection: Axis.horizontal,
-            children: listMovies
-                .map(
-                  (movie) => Container(
-                    margin: EdgeInsets.symmetric(horizontal: 30),
-                    padding: EdgeInsets.all(10),
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'INTERSTELLAR',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        Container(
-                          height: 500,
-                          width: 350,
-                          margin: EdgeInsets.symmetric(vertical: 30),
-                          child: Image(
-                            image: AssetImage(
-                              'assets/images/img5.jpg',
-                            ),
-                            height: 320,
-                            width: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Text(
-                          "Short description, in 80 characters.",
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: buttonViewMoview(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-                .toList(),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            // Backgound-Image
+            image: AssetImage(
+              'assets/images/bkg.jpg',
+            ),
+            fit: BoxFit.cover,
           ),
-          Text('Actions'),
-          Text('Drames'),
-          Text('Populaires'),
-          Text('Actions'),
-          Text('Drames'),
-        ],
+        ),
+        child: TabBarView(
+          controller: _tabController,
+          children: <Widget>[
+            ListView(
+              scrollDirection: Axis.horizontal,
+              children: listMovies
+                  .map(
+                    (movie) => movieCard(
+                      context,
+                      title: movie['title'],
+                      actor: movie['actor'],
+                      description: movie['description'],
+                      image: movie['image'],
+                    ),
+                  )
+                  .toList(),
+            ),
+            // caroussel card
+            Container(
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: size.height,
+                  initialPage: 0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 2),
+                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
+                  pauseAutoPlayOnTouch: true,
+                  reverse: false,
+                  pauseAutoPlayInFiniteScroll: true,
+                  pauseAutoPlayOnManualNavigate: true,
+                  scrollDirection: Axis.horizontal,
+                ),
+                items: listMovies
+                    .map(
+                      (movie) => movieCard(
+                        context,
+                        title: movie['title'],
+                        actor: movie['actor'],
+                        description: movie['description'],
+                        image: movie['image'],
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+
+            // caroussel card
+            Text('Drames'),
+            Text('Populaires'),
+            Text('Actions'),
+            Text('Drames'),
+          ],
+        ),
       ),
     );
   }
